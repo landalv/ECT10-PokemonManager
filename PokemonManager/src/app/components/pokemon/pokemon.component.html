@@ -1,0 +1,28 @@
+<li>
+    <ul class="menu-list">
+        <li *ngIf="pokemon.img; else noimagen" class="text-center">
+            <img src="{{pokemon.img}}" (click)="clickEnImagen()" alt="{{pokemon.nombre}}" class="mx-auto"/>
+        </li>
+        <li>Nombre :
+            <span *ngIf="pokemon.nombre; else na">{{pokemon.nombre}}</span>
+        </li>
+        <li>Categoria :
+            <span *ngIf="pokemon.categoria; else na">{{pokemon.categoria}}</span>
+        </li>
+        <li>Tipo :
+            <span *ngIf="pokemon.tipo; else na">
+                <span *ngFor="let tipo of pokemon.tipo">{{tipo}}</span>
+            </span>
+        </li>
+        <li>Talla :
+            <span *ngIf="pokemon.talla; else na">{{pokemon.talla | number:'1.0-1'}} m</span>
+        </li>
+        <li>Peso : <span *ngIf="pokemon.peso; else na">{{pokemon.peso | number:'1.0-1'}} kg</span>
+        </li>
+        <ng-template #na>N/A</ng-template>
+        <ng-template #noimagen>
+            <h3 class="display-6 text-center">Imagen no encontrada</h3>
+            <br>
+        </ng-template>
+    </ul>
+</li>

@@ -1,0 +1,71 @@
+<div class="container mx-5">
+    <hr>
+    <div class="row justify-content-center">
+        <div class="col-12 my-5">
+            <h3 class="display-5 text-center">Pokedex</h3>
+        </div>
+        <div class="col-4 my-3">
+            <p>En el orden del array: </p>
+            <p> {{cuenta}} Pokémons en el array</p>
+        </div>
+        <div class="col-4 my-3">
+            <p *ngIf="pokemonSeleccionado">El Pokémon seleccionado es: {{ pokemonSeleccionado }}</p>
+        </div>
+        <div class="col-4 my-3">
+            <form>
+                <div class="field has-addons">
+                    <div class="control has-icons-left">
+                        <input class="input is-small" name="PokemonBusca" type="test" placeholder="Nombre del Pokemon"
+                            [(ngModel)]="formBuscarPokemon.nombre" (keyup)="buscar(formBuscarPokemon.nombre)">
+                    </div>
+                    <div class="control">
+                        <a class="button is-primary is-small" (click)="buscar(formBuscarPokemon.nombre)">
+                            Buscar
+                        </a>
+                    </div>
+                    <div class="control">
+                        <a class="button is-light is-small" (click)="cancelarBuscar()">
+                            Cancelar </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="columns is-multiline">
+            <ul class="menu-list column is-one-third" *ngFor="let pokemon of pokemons">
+                <!-- PARA LA PRACTICA TEMA 7 -->
+                <!--<li>
+                    <ul class="menu-list">
+                        <li *ngIf="pokemon.imagen; else noimagen" class="text-center">
+                            <img src="{{pokemon.imagen}}" alt="{{pokemon.nombre}}" class="mx-auto">
+                        </li>
+                        <li>Nombre :
+                            <span *ngIf="pokemon.nombre; else na">{{pokemon.nombre}}</span>
+                        </li>
+                        <li>Categoria :
+                            <span *ngIf="pokemon.categoria; else na">{{pokemon.categoria}}</span>
+                        </li>
+                        <li>Tipo :
+                            <span *ngIf="pokemon.tipo; else na">
+                                <span *ngFor="let tipo of pokemon.tipo">{{tipo}}</span>
+                            </span>
+                        </li>
+                        <li>Talla :
+                            <span *ngIf="pokemon.altura; else na">{{pokemon.altura | number:'1.0-1'}} m</span>
+                        </li>
+                        <li>Peso : <span *ngIf="pokemon.peso; else na">{{pokemon.peso | number:'1.0-1'}} kg</span>
+                        </li>
+                        <ng-template #na>N/A</ng-template>
+                        <ng-template #noimagen>
+                            <h3 class="display-6 text-center">Imagen no encontrada</h3>
+                            <br>
+                        </ng-template>
+                    </ul>
+                </li>-->
+                <!-- PARA LA PRACTICA DEL TEMA 8 -->
+                <app-pokemon [pokemon]=pokemon (eventoClicImagen)="pokemonSeleccionado =$event"></app-pokemon>
+            </ul>
+        </div>
+    </div>
+</div>

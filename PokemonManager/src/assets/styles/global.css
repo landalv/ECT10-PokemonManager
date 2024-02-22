@@ -1,0 +1,9 @@
+* {
+    --hr-color: rgb(0, 0, 0);
+}
+
+hr {
+    border: 1px solid var(--hr-color);
+    background-color: var(--hr-color);
+    color: var(--hr-color);
+}
